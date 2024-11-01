@@ -2,55 +2,71 @@ import { Card } from "@/types";
 
 const BASE_URL = typeof window === 'undefined' ? process.env.NEXT_PUBLIC_BASE_URL : '';
 
-// Получить все продукты
 export async function getProducts(): Promise<Card[]> {
-    const response = await fetch(`/api/product`, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    });
-  
-    if (!response.ok) {
-      console.error('Failed to fetch products');
-      return [];
-    }
-  
-    return response.json();
+  try {
+      const response = await fetch(`${BASE_URL}/api/product`, {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' },
+      });
+
+      if (!response.ok) {
+          console.error('Не удалось получить продукты:', response.statusText);
+          return []; // Возвращаем пустой массив в случае ошибки
+      }
+
+      return await response.json();
+  } catch (error) {
+      console.error('Ошибка при получении продуктов:', error);
+      return []; // Возвращаем пустой массив в случае исключения
+  }
 }
 
+// Получить продукты по категории
 export async function getProductsByCategory(category: string): Promise<Card[]> {
-    let url = `/api/product`;
-    const params: URLSearchParams = new URLSearchParams();
-    params.append('category', category);
+  try {
+      let url = `${BASE_URL}/api/product`;
+      const params: URLSearchParams = new URLSearchParams();
+      params.append('category', category);
 
-    if (params.toString()) {
-        url += `?${params.toString()}`;
-    }
+      if (params.toString()) {
+          url += `?${params.toString()}`;
+      }
 
-    const response = await fetch(url, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-    });
+      const response = await fetch(url, {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' },
+      });
 
-    if (!response.ok) {
-        throw new Error('Failed to fetch products');
-    }
+      if (!response.ok) {
+          console.error('Не удалось получить продукты по категории:', response.statusText);
+          return []; // Возвращаем пустой массив в случае ошибки
+      }
 
-    return response.json();
+      return await response.json();
+  } catch (error) {
+      console.error('Ошибка при получении продуктов по категории:', error);
+      return []; // Возвращаем пустой массив в случае исключения
+  }
 }
 
-  
 // Получить продукт по ID
-export async function getProductById(id: number): Promise<Card> {
-    const response = await fetch(`/api/product?id=${id}`, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    });
-  
-    if (!response.ok) {
-      throw new Error(`Failed to fetch product with id ${id}`);
-    }
-  
-    return response.json();
+export async function getProductById(id: number): Promise<Card | null> {
+  try {
+      const response = await fetch(`${BASE_URL}/api/product?id=${id}`, {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' },
+      });
+
+      if (!response.ok) {
+          console.error(`Не удалось получить продукт с id ${id}:`, response.statusText);
+          return null; // Возвращаем null в случае ошибки
+      }
+
+      return await response.json();
+  } catch (error) {
+      console.error(`Ошибка при получении продукта с id ${id}:`, error);
+      return null; // Возвращаем null в случае исключения
+  }
 }
 
 // Создать новый продукт

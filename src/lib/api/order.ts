@@ -9,7 +9,7 @@ export async function createOrder({
     delivery_method: string;
     delivery_address?: string;
   }): Promise<void> {
-    const response = await fetch(`/api/order`, {
+    const response = await fetch(`${BASE_URL}/api/order`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
