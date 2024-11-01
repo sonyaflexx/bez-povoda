@@ -1,12 +1,10 @@
 import Container from "@/components/ui/Container";
-import FooterForm from "./FooterForm";
 import Link from "next/link";
 import Image from "next/image";
 
 const Footer = () => {
     return (
         <>
-            <FooterForm />
             <footer className="border-t border-[#cccccc] py-[80px]">
                 <Container>
                     <div className="flex justify-between">

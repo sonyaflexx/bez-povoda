@@ -1,9 +1,14 @@
 'use client'
 
+import Spinner from "@/components/ui/Spinner";
+import { addToCart } from "@/lib/api/cart";
 import { useState } from "react";
 
 export default function AddCartForm({ id }: { id: number }) {
     const [count, setCount] = useState(1);
+    const [error, setError] = useState<string | null>(null);
+    const [success, setSuccess] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const increment = () => {
         setCount(count + 1);
@@ -23,6 +28,22 @@ export default function AddCartForm({ id }: { id: number }) {
           setCount(0);
         }
     };
+
+    const onSubmit = async () => {
+        setLoading(true);
+        try {
+            const response = await addToCart(id, count);
+            setSuccess(true);
+            
+            setTimeout(() => {
+                setSuccess(false);
+            }, 2000);
+        } catch {
+            setError('Failed to add product to cart');
+        } finally {
+            setLoading(false);
+        }
+    }
 
     return (
         <div className="flex gap-[50px] w-full h-[70px] font-public-sans font-medium">
@@ -47,8 +68,12 @@ export default function AddCartForm({ id }: { id: number }) {
                 </button>
             </div>
 
-            <button className="h-full flex-1 border border-[#1E1E1E] flex items-center justify-center text-[#292D32] text-[20px]">
-                В корзину
+            <button onClick={onSubmit} disabled={loading || success} className={`h-full flex-1 border border-[#1E1E1E] transition-all flex items-center justify-center text-[#292D32] text-[20px] ${success ? 'bg-black text-white' : ''}`}>
+                <span className="relative w-full text-center h-full align-middle">
+                    <span className={`absolute left-0 transition-all w-full top-1/2 -translate-y-1/2 duration-300 ${success || loading ? 'opacity-0' : 'opacity-100'}`}>В корзину</span>
+                    <span className={`absolute left-0 transition-all w-full top-1/2 -translate-y-1/2 duration-300 ${success ? 'opacity-100' : 'opacity-0'}`}>Товар успешно добавлен!</span>
+                    <span className={`absolute left-0 transition-all w-full top-1/2 -translate-y-1/2 duration-300 ${loading ? 'opacity-100' : 'opacity-0'}`}><Spinner className="size-8" /></span>
+                </span>
             </button>
         </div>
     )

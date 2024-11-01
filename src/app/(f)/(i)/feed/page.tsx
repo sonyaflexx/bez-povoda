@@ -1,52 +1,16 @@
 import { CardList } from "@/components/shared/Cards";
 import Container from "@/components/ui/Container";
+import { getProducts } from "@/lib/api";
 
-const items = [
-    {
-        id: 1,
-        title: 'Букет №1',
-        imgUrl: 'https://i.imgur.com/7Ruv6xH.png',
-        price: 5470
-      },
-      {
-        id: 2,
-        title: 'Букет №2',
-        imgUrl: 'https://i.imgur.com/dkKKiYW.png',
-        price: 1370
-      },
-      {
-        id: 3,
-        title: 'Букет №3',
-        imgUrl: 'https://i.imgur.com/OVsvNV1.png',
-        price: 2570
-      },
-      {
-        id: 1,
-        title: 'Букет №1',
-        imgUrl: 'https://i.imgur.com/7Ruv6xH.png',
-        price: 5470
-      },
-      {
-        id: 2,
-        title: 'Букет №2',
-        imgUrl: 'https://i.imgur.com/dkKKiYW.png',
-        price: 1370
-      },
-      {
-        id: 3,
-        title: 'Букет №3',
-        imgUrl: 'https://i.imgur.com/OVsvNV1.png',
-        price: 2570
-      }
-]
+const Page = async () => {
+    const items = await getProducts();
 
-const FlowersPage = () => {
     return (
         <main className="mt-[48px] w-full">
             <section>
                 <Container>
                     <div className="text-center mx-auto mb-[90px]">
-                        <h2 className="font-pioner-sans text-[70px] text-foregroud-primary">Цветы</h2>
+                        <h2 className="font-pioner-sans text-[70px] text-foregroud-primary">Без Повода</h2>
                         <p className="font-magnet text-[20px] leading-[30px] text-foregroud-tertiary">Мы заботимся о качестве каждой детали, чтобы ваш букет радовал глаз и приносил настроение. Выберите свой идеальный букет и подарите немного красоты близким или себе, даже без повода!</p>
                     </div>
                     <CardList items={items} />
@@ -62,4 +26,4 @@ const FlowersPage = () => {
     )
 }
 
-export default FlowersPage;
+export default Page;

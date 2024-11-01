@@ -3,8 +3,8 @@
 			Created with Pixso.
 	</desc>
 	<defs/>
-	<rect id="vuesax/linear/user" rx="-0.500000" width="23.000000" height="23.000000" transform="translate(0.500000 0.500000)" fill="#FFFFFF" fill-opacity="0"/>
-	<path id="Vector" d="M12 12C9.23 12 7 9.76 7 7C7 4.23 9.23 2 12 2C14.76 2 17 4.23 17 7C17 9.76 14.76 12 12 12Z" stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="1.500000" stroke-linejoin="round"/>
-	<path id="Vector" d="M20.59 22C20.59 18.12 16.74 15 12 15C7.26 15 3.41 18.12 3.41 22" stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+	<rect id="vuesax/linear/user" rx="-0.500000" width="23.000000" height="23.000000" transform="translate(0.500000 0.500000)" fill="currentColor" fill-opacity="0"/>
+	<path id="Vector" d="M12 12C9.23 12 7 9.76 7 7C7 4.23 9.23 2 12 2C14.76 2 17 4.23 17 7C17 9.76 14.76 12 12 12Z" stroke="currentColor" stroke-opacity="1.000000" stroke-width="1.500000" stroke-linejoin="round"/>
+	<path id="Vector" d="M20.59 22C20.59 18.12 16.74 15 12 15C7.26 15 3.41 18.12 3.41 22" stroke="currentColor" stroke-opacity="1.000000" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
 	<g opacity="0.000000"/>
 </svg>

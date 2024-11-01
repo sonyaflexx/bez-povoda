@@ -2,52 +2,15 @@ import { CardList } from "@/components/shared/Cards";
 import HeaderSlogan from "@/components/shared/Header/HeaderSlogan";
 import InstagramSection from "@/components/shared/InstagramSection";
 import Container from "@/components/ui/Container";
+import { getProducts } from "@/lib/api";
+import { isAuth } from "@/lib/isAuth";
 import Image from "next/image";
 import Link from "next/link";
 
-const flowersGroup1 = [
-  {
-    id: 1,
-    title: 'Букет №1',
-    imgUrl: 'https://i.imgur.com/7Ruv6xH.png',
-    price: 5470
-  },
-  {
-    id: 2,
-    title: 'Букет №2',
-    imgUrl: 'https://i.imgur.com/dkKKiYW.png',
-    price: 1370
-  },
-  {
-    id: 3,
-    title: 'Букет №3',
-    imgUrl: 'https://i.imgur.com/OVsvNV1.png',
-    price: 2570
-  }
-]
+export default async function Home() {
+  const flowersGroup1 = (await getProducts()).slice(0, 3);
+  const flowersGroup2 = (await getProducts()).slice(-3);
 
-const flowersGroup2 = [
-  {
-    id: 1,
-    title: 'Букет №4',
-    imgUrl: 'https://i.imgur.com/7Ruv6xH.png',
-    price: 5470
-  },
-  {
-    id: 2,
-    title: 'Букет №5',
-    imgUrl: 'https://i.imgur.com/dkKKiYW.png',
-    price: 1370
-  },
-  {
-    id: 3,
-    title: 'Букет №6',
-    imgUrl: 'https://i.imgur.com/OVsvNV1.png',
-    price: 2570
-  }
-]
-
-export default function Home() {
   return (
     <main className="w-full">
       <section className="h-[800px] w-full relative bg-[url('/images/hero-bg.png')] bg-cover">
@@ -56,7 +19,7 @@ export default function Home() {
           <nav className="flex flex-col gap-2 items-center py-10 text-white relative">
             <Link href={'/'} className="text-8xl">Без Повода</Link>
             <ul className="flex items-center gap-[60px] text-xl font-public-sans font-bold">
-              <li><Link href={'/bez_povoda'} className="hover:text-pink-200 hover:underline underline-offset-4 transition-all duration-300">Без повода</Link></li>
+              <li><Link href={'/feed'} className="hover:text-pink-200 hover:underline underline-offset-4 transition-all duration-300">Без повода</Link></li>
               <li><Link href={'/new'} className="hover:text-pink-200 hover:underline underline-offset-4 transition-all duration-300">Новое</Link></li>
               <li><Link href={'/flowers'} className="hover:text-pink-200 hover:underline underline-offset-4 transition-all duration-300">Цветы</Link></li>
               <li><Link href={'/dried'} className="hover:text-pink-200 hover:underline underline-offset-4 transition-all duration-300">Сухоцветы</Link></li>
@@ -65,9 +28,17 @@ export default function Home() {
             </ul>
 
             <ul className="absolute right-0 top-[80px] flex gap-[25px]">
-              <li><Link href={'/'} className=""><Image src={'/images/icons/bag.svg'} alt="Bag" width={24} height={24} className="hover:opacity-80 transition-opacity" /></Link></li>
-              <li><Link href={'/'} className=""><Image src={'/images/icons/user.svg'} alt="User" width={24} height={24} className="hover:opacity-80 transition-opacity" /></Link></li>
-              <li><Link href={'/'} className=""><Image src={'/images/icons/search.svg'} alt="Search" width={24} height={24} className="hover:opacity-80 transition-opacity" /></Link></li>
+              {isAuth() ? (
+                <>
+                  <li><Link href={'/cart'} className=""><Image src={'/images/icons/bag-w.svg'} alt="Bag" width={24} height={24} className="hover:opacity-80 transition-opacity" /></Link></li>
+                  <li><Link href={'/profile'} className=""><Image src={'/images/icons/user-w.svg'} alt="User" width={24} height={24} className="hover:opacity-80 transition-opacity" /></Link></li>
+                </>
+              ) : (
+                <>
+                  <Link href={'/auth/sign-in'} className="border-2 border-white px-4 py-2 mt-[-9px] text-md font-inter rounded-xl hover:bg-white hover:text-black transition-all">Войти</Link>
+                </>
+              )}
+              <li><Link href={'/'} className=""><Image src={'/images/icons/search-w.svg'} alt="Search" width={24} height={24} className="hover:opacity-80 transition-opacity" /></Link></li>
             </ul>
           </nav>
         </Container>

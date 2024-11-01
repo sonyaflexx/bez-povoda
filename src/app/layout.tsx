@@ -49,7 +49,6 @@ export default function RootLayout({
         className={`${pionerSans.variable} ${magnetTrial.variable} ${magnetTrialRegular.variable} ${magnetTrialSemibold.variable} ${inter.variable} antialiased`}
       >
         {children}
-        <Footer />
       </body>
     </html>
   );

@@ -1,0 +1,15 @@
+import RegisterForm from "@/components/shared/AuthForms/RegisterForm";
+import Container from "@/components/ui/Container";
+import Link from "next/link";
+
+export default async function Page() {
+  return (
+    <main className="w-full">
+      <section className="py-40">
+        <Container>
+          <RegisterForm />
+        </Container>
+      </section>
+    </main>
+  );
+}
