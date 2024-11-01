@@ -3,7 +3,7 @@ import { Cart } from "@/types";
 const BASE_URL = typeof window === 'undefined' ? process.env.NEXT_PUBLIC_BASE_URL : '';
 
 export async function addToCart(product_id: number, quantity: number): Promise<void> {
-    const response = await fetch(`${BASE_URL}/api/cart/`, {
+    const response = await fetch(`/api/cart/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -20,7 +20,7 @@ export async function addToCart(product_id: number, quantity: number): Promise<v
 
 // Функция для получения корзины пользователя
 export async function getCart({ userId }: { userId: string }): Promise<Cart> {
-    const response = await fetch(`${BASE_URL}/api/cart/${userId}`, {
+    const response = await fetch(`/api/cart/${userId}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

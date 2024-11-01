@@ -4,7 +4,7 @@ const BASE_URL = typeof window === 'undefined' ? process.env.NEXT_PUBLIC_BASE_UR
 
 // Получить все продукты
 export async function getProducts(): Promise<Card[]> {
-    const response = await fetch(`${BASE_URL}/api/product`, {
+    const response = await fetch(`/api/product`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });
@@ -18,7 +18,7 @@ export async function getProducts(): Promise<Card[]> {
 }
 
 export async function getProductsByCategory(category: string): Promise<Card[]> {
-    let url = `${BASE_URL}/api/product`;
+    let url = `/api/product`;
     const params: URLSearchParams = new URLSearchParams();
     params.append('category', category);
 
@@ -41,7 +41,7 @@ export async function getProductsByCategory(category: string): Promise<Card[]> {
   
 // Получить продукт по ID
 export async function getProductById(id: number): Promise<Card> {
-    const response = await fetch(`${BASE_URL}/api/product?id=${id}`, {
+    const response = await fetch(`/api/product?id=${id}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });

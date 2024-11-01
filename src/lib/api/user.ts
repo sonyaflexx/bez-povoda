@@ -3,7 +3,7 @@ import { User, UserWithOrders } from "@/types";
 const BASE_URL = typeof window === 'undefined' ? process.env.NEXT_PUBLIC_BASE_URL : '';
 
 export async function getUser(userId: string): Promise<UserWithOrders> {
-  const response = await fetch(`${BASE_URL}/api/user/${userId}`, {
+  const response = await fetch(`/api/user/${userId}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
