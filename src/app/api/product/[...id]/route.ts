@@ -26,7 +26,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
 export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
     const { id } = params;
     try {
-      await pool.query('DELETE FROM flower_product WHERE product_id = $1', [id]);
+      await pool.query('DELETE FROM flower_product WHERE product_id = $1', [Number(id)]);
       return NextResponse.json({ message: 'Продукт удален' });
     } catch (error) {
       console.error('Ошибка при удалении продукта:', error);
