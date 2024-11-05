@@ -27,4 +27,3 @@ const FlowersPage = async () => {
 }
 
 export default FlowersPage;
-export const dynamic = 'force-dynamic'
