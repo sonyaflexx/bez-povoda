@@ -3,7 +3,7 @@ import Container from "@/components/ui/Container";
 import { getProductsByCategory } from "@/lib/api";
 
 const FlowersPage = async () => {
-    const items = await getProductsByCategory('цветы', { revalidate: 10 });
+    const items = await getProductsByCategory('цветы');
 
     return (
         <main className="mt-[48px] w-full">
