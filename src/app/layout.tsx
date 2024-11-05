@@ -4,6 +4,10 @@ import { Inter } from 'next/font/google'
 import "./globals.css";
 import Footer from "@/components/shared/Footer";
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+export const fetchCache = 'force-no-store'
+
 const pionerSans = localFont({
   src: "./fonts/PionerSans-VF.ttf",
   variable: "--font-pioner-sans",
