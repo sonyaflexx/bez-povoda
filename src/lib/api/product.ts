@@ -4,7 +4,7 @@ const BASE_URL = typeof window === 'undefined' ? process.env.NEXT_PUBLIC_BASE_UR
 
 export async function getProducts(): Promise<Card[]> {
   try {
-      const response = await fetch(`${BASE_URL}/api/product`, {
+      const response = await fetch(`${BASE_URL}/api/product?i=${Date.now()}`, {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' },
       });
