@@ -7,8 +7,6 @@ export async function getUser(userId: string): Promise<UserWithOrders> {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
-      cache: 'no-store',
-      next: { revalidate: 0 }
   });
 
   if (!response.ok) {
