@@ -26,10 +26,16 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
 export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
     const { id } = params;
     try {
-      await pool.query('DELETE FROM flower_product WHERE product_id = $1', [Number(id)]);
-      return NextResponse.json({ message: 'Продукт удален' });
+        await pool.query('BEGIN'); // Start transaction
+        // Delete related order items
+        await pool.query('DELETE FROM flower_order_item WHERE product_id = $1', [Number(id)]);
+        // Delete the product itself
+        await pool.query('DELETE FROM flower_product WHERE product_id = $1', [Number(id)]);
+        await pool.query('COMMIT'); // Commit transaction
+        return NextResponse.json({ message: 'Продукт и связанные заказы удалены' });
     } catch (error) {
-      console.error('Ошибка при удалении продукта:', error);
-      return NextResponse.json({ message: 'Ошибка сервера' }, { status: 500 });
+        console.error('Ошибка при удалении продукта:', error);
+        await pool.query('ROLLBACK'); // Rollback transaction
+        return NextResponse.json({ message: 'Ошибка сервера' }, { status: 500 });
     }
 }
