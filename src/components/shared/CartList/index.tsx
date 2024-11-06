@@ -27,7 +27,7 @@ export default function CartList({ initialCart }: { initialCart: CartItem[] }) {
                                     <img 
                                         src={item.photo} 
                                         alt={item.name} 
-                                        className="size-52 object-cover mr-4 rounded-xl"
+                                        className="size-52 min-w-52 object-cover mr-4 rounded-xl"
                                     />
                                 </Link>
                                 <div className="flex flex-col justify-between">
