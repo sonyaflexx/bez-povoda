@@ -48,7 +48,7 @@ export default function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-8 border-2 border-zinc-300 w-1/2 mx-auto">
+    <form onSubmit={handleSubmit} className="bg-white p-8 border-2 border-zinc-300 w-1/2 max-sm:w-full mx-auto">
       <h2 className="text-4xl font-inter font-semibold text-center mb-6">Вход</h2>
       <div className="mb-4">
         <label className="block text-md font-inter font-medium text-gray-700 mb-2" htmlFor="email">
