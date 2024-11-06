@@ -18,10 +18,10 @@ export default async function Page() {
         <section className="py-20 bg-gray-100 font-inter">
           <Container>
             <div className="max-w-1/2 w-full mx-auto bg-white shadow-lg rounded-lg p-6">
-              <div className="flex justify-between">
+              <div className="flex justify-between max-sm:flex-col">
                 <h2 className="text-2xl font-semibold mb-4">Личный Кабинет</h2>
-                <div>
-                  {userData?.userType === 'Administrator' ? <Link href="/admin" className="border border-black rounded-lg px-4 py-3 text-white bg-black hover:bg-zinc-700 transition-colors mr-4">Админ-панель</Link> : null}
+                <div className="max-sm:flex max-sm:flex-col max-sm:gap-2 max-sm:mb-8">
+                  {userData?.userType === 'Administrator' ? <Link href="/admin" className="border border-black rounded-lg px-4 py-3 text-white bg-black hover:bg-zinc-700 transition-colors mr-4 max-sm:w-full max-sm:text-center">Админ-панель</Link> : null}
                   <LogoutButton />
                 </div>
               </div>
@@ -39,7 +39,7 @@ export default async function Page() {
                 {orders.length > 0 ? (
                   <ul className="space-y-4">
                     {sortedOrders.map(order => (
-                      <li key={order.order_id} className="p-4 bg-gray-50 rounded shadow flex">
+                      <li key={order.order_id} className="p-4 bg-gray-50 rounded shadow flex max-sm:flex-col">
                           <div>
                               <p><strong>Номер заказа:</strong> {order.order_id}</p>
                               <p><strong>Дата заказа:</strong> {new Date(order.order_date).toLocaleDateString()} {new Date(order.order_date).toLocaleTimeString()}</p>
@@ -48,9 +48,9 @@ export default async function Page() {
                               {order.delivery_method === 'Доставка' && <p><strong>Адрес доставки:</strong> {order.delivery_address}</p>}
                           </div>
                         
-                        <div className="flex flex-1 flex-col items-end justify-between">
+                        <div className="flex flex-1 flex-col max-sm:flex-col-reverse items-end max-sm:items-start max-sm:mt-4 justify-between">
                           <div>{order.order_status}</div>
-                          <div className="flex items-end gap-8">
+                          <div className="flex items-end max-sm:items-start max-sm:flex-col max-sm:w-full gap-8">
                               <div className="flex flex-wrap gap-1">
                                   {order.items.map(item => (
                                   <div key={item.product_id} className="flex items-center">

@@ -30,13 +30,13 @@ export default async function ProductPage({ params }: { params: { slug: any } })
     ]
 
     return (
-        <main className="mt-[90px]">
+        <main className="mt-[90px] max-sm:mt-[50px]">
             <section className="mb-[190px]">
                 <Container>
-                    <div className="flex gap-[44px]">
-                        <img src={data.photo} width={697} height={743} alt="" className="max-h-[743px] min-w-[697px] object-cover" />
+                    <div className="flex gap-[44px] max-sm:flex-col max-sm:gap-[20px]">
+                        <img src={data.photo} width={697} height={743} alt="" className="max-h-[743px] min-w-[697px] max-sm:min-w-full object-cover" />
                         <div className="w-full">
-                            <h2 className="text-[#1E1E1E] font-magnet-regular text-[60px]">{data.name}</h2>
+                            <h2 className="text-[#1E1E1E] font-magnet-regular text-[60px] max-sm:text-[40px]">{data.name}</h2>
                             <div className="-mt-1">
                                 <div className="flex gap-[5px] items-center">
                                     {[1, 2, 3, 4, 5].map((item, index) => 
@@ -58,7 +58,7 @@ export default async function ProductPage({ params }: { params: { slug: any } })
                                     <span className="text-[#717171] font-public-sans font-medium text-[18px] ml-2">{data.reviews_count || '0'} отзывов</span>
                                 </div>
                             </div>
-                            <span className="block mt-4 text-[#292D32] font-public-sans font-medium text-[50px]">{data.price} ₽</span>
+                            <span className="block mt-4 text-[#292D32] font-public-sans font-medium text-[50px] max-sm:text-[35px]">{data.price} ₽</span>
                             <div className="mt-7">
                                 <AddCartForm id={data.product_id} />
                             </div>

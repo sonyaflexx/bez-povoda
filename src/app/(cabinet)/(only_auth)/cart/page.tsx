@@ -22,7 +22,7 @@ const CartPage = async () => {
         <main className="w-full">
             <section className="py-20 bg-gray-100 font-inter">
                 <Container>
-                    <div className="container mx-auto p-4">
+                    <div className="container mx-auto p-4 max-sm:p-0">
                         <h1 className="text-2xl font-bold">Ваша корзина - {totalPrice.toLocaleString('ru-RU', { maximumFractionDigits: 0 })}₽</h1>
                         <p className="text-lg text-zinc-600">Всего {totalItems} товара(-ов)</p>
                         <div className="mt-4">

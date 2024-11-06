@@ -46,7 +46,7 @@ export default function AddCartForm({ id }: { id: number }) {
     }
 
     return (
-        <div className="flex gap-[50px] w-full h-[70px] font-public-sans font-medium">
+        <div className="flex gap-[50px] max-sm:gap-[20px] w-full h-[70px] font-public-sans font-medium">
             <div className="h-full w-[160px] border border-[#1E1E1E] flex items-center justify-center">
                 <button onClick={decrement} className="flex-1 h-full pl-[17px]">
                     <div className="relative">

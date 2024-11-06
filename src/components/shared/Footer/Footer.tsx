@@ -7,7 +7,7 @@ const Footer = () => {
         <>
             <footer className="border-t border-[#cccccc] py-[80px]">
                 <Container>
-                    <div className="flex justify-between">
+                    <div className="flex justify-between max-sm:flex-col max-sm:gap-8">
                         <div>
                             <h2><Link href={'/'} className="font-magnet-semibold text-[48px]">Без Повода</Link></h2>
                             <p className="mt-3 font-public-sans font-medium text-[15px] text-[#1E1E1E] opacity-80 max-w-[280px] leading-tight">Этот план развития поможет вам выполнить свои решения и достичь целей, к которым вы стремились.</p>
@@ -20,7 +20,7 @@ const Footer = () => {
                                 <li><Link href={'/'}><Image src="/images/social/basket.svg" alt="Basket" width={24} height={24} /></Link></li>
                             </ul>
                         </div>
-                        <div className="grid grid-cols-4 gap-[60px] font-inter">
+                        <div className="grid grid-cols-4 gap-[60px] font-inter max-sm:grid-cols-2">
                             <div className="col-span-1">
                                 <h4 className="text-[16px] font-semibold mb-5">Маркетплэйс</h4>
                                 <nav className="text-[15px]">

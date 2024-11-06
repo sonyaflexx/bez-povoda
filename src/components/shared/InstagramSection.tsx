@@ -10,7 +10,7 @@ export default function InstagramSection() {
                 <h3 className="font-magnet-regular text-[40px] mb-[33px]">Мы в Instagram</h3>
                 <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[60px] mb-[52px]">
                 {[1, 2, 3].map((item) => (
-                    <li key={item}>
+                    <li key={item} className={item > 1 ? 'max-sm:hidden' : ''}>
                     <Link href={`https://instagram.com/bezpovoda_flowers72`} target="_blank" className="overflow-hidden group font-magnet-regular leading-none flex flex-col items-center gap-2 w-full max-w-[377px]">
                         <div className="relative w-full h-[461px]">
                             <img src={`/images/inst-${item}.png`} alt="" className="pointer-events-none" />

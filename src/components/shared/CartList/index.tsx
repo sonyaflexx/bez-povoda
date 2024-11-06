@@ -21,28 +21,29 @@ export default function CartList({ initialCart }: { initialCart: CartItem[] }) {
             ) : (
                 <>
                     {cartItems.map(item => (
-                        <li key={item.item_id} className="p-12 rounded-3xl bg-white mb-4 flex">
-                            <div className="flex gap-4 text-xl w-full">
+                        <li key={item.item_id} className="p-12 max-sm:p-4 rounded-3xl bg-white mb-4 flex">
+                            <div className="flex gap-4 max-sm:gap-0 text-xl w-full">
                                 <Link href={`/flowers/${item.product_id}`}>
                                     <img 
                                         src={item.photo} 
                                         alt={item.name} 
-                                        className="size-52 min-w-52 object-cover mr-4 rounded-xl"
+                                        className="size-52 min-w-52 object-cover mr-4 rounded-xl max-sm:min-w-16 max-sm:size-16"
                                     />
                                 </Link>
-                                <div className="flex flex-col justify-between">
+                                <div className="flex flex-col justify-between max-sm:w-full">
                                     <Link href={`/flowers/${item.product_id}`}>
                                         <div>
-                                            <h3 className="text-3xl font-semibold">{item.name}</h3>
-                                            <p className="text-zinc-700">{item.description}</p>
+                                            <h3 className="text-3xl max-sm:text-xl font-semibold">{item.name}</h3>
+                                            <p className="text-zinc-700 max-sm:hidden">{item.description}</p>
                                         </div>
                                     </Link>
                                     <div>
                                         <p>Количество: {item.quantity}</p>
-                                        <p className="text-2xl font-semibold">{(item.price * item.quantity).toLocaleString('ru-RU', { maximumFractionDigits: 0 })}₽</p>
+                                        <p className="text-2xl font-semibold max-sm:text-xl">{(item.price * item.quantity).toLocaleString('ru-RU', { maximumFractionDigits: 0 })}₽</p>
                                     </div>
+                                    <Button className="mt-4 ml-auto sm:hidden" handleClick={() => handleRemoveItem(item.item_id)}>Удалить</Button>
                                 </div>
-                                <Button className="mt-auto ml-auto" handleClick={() => handleRemoveItem(item.item_id)}>Удалить</Button>
+                                <Button className="mt-auto ml-auto max-sm:hidden" handleClick={() => handleRemoveItem(item.item_id)}>Удалить</Button>
                             </div>
                         </li>
                     ))}
