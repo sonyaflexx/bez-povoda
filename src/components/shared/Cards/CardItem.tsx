@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const CardItem = ({ item }: { item: Card }) => {
     return (
-        <article>
+        <article className="flex justify-center">
             <Link href={`/flowers/${item.product_id}`} className="group font-magnet-regular leading-none flex flex-col items-center gap-2 w-full max-w-[377px]">
                 <div className="relative w-full h-[461px] max-sm:h-[350px] mb- overflow-hidden bg-slate-500 bg-opacity-5">
                     <img src={item.photo} alt="" className="pointer-events-none object-cover h-full mx-auto" />
