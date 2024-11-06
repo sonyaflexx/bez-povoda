@@ -85,7 +85,7 @@ const Header = () => {
                     <Link href={'/auth/sign-in'} className="border-2 border-black px-4 py-2 mt-[-9px] text-md font-inter rounded-xl hover:bg-black hover:text-white transition-all max-sm:hidden">Войти</Link>
                   </>
                 )}
-                <li><Link href={'/'} className=""><Image src={'/images/icons/search.svg'} alt="Search" width={24} height={24} className="hover:opacity-80 transition-opacity text-zinc-900" /></Link></li>
+                <li><Link href={'/'} className=""><Image src={'/images/icons/search.svg'} alt="Search" width={24} height={24} className="hover:opacity-80 transition-opacity text-zinc-900 max-sm:hidden" /></Link></li>
               </ul>
             </nav>
           </Container>
